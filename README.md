@@ -22,6 +22,7 @@ Traditional exoplanet characterization in microlensing surveys relies on computa
 ## Repository Structure
 
 - `train.py`: Full training pipeline (synthetic generator, 1D-ResNet, differentiable PSPL engine, and multi-objective loss).
+- `evaluate_audit.py`: Scientific audit pipeline with non-linear median filtering and the two-tiered discovery gate.
 - `requirements.txt`: Python package dependencies.
 
 ---
@@ -33,6 +34,14 @@ Traditional exoplanet characterization in microlensing surveys relies on computa
 git clone https://github.com/gediJESUS/microlensing-pinn.git
 cd microlensing-pinn
 
+# Install dependencies
+pip install -r requirements.txt
+
+# 1. Train the model
+python train.py --epochs 250 --batch_size 32
+
+# 2. Run the observational audit
+python evaluate_audit.py --data_dir ./data/audit_sample
 # Install dependencies
 pip install -r requirements.txt
 
